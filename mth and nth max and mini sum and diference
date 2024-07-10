@@ -1,0 +1,51 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static int findMthMax(int[] arr, int m) {
+        Arrays.sort(arr);
+        return arr[arr.length - m];
+    }
+
+
+    public static int findNthMin(int[] arr, int n) {
+        Arrays.sort(arr);
+        return arr[n - 1];
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter the number of elements in the array: ");
+        int length = scanner.nextInt();
+
+
+        int[] arr = new int[length];
+        System.out.println("Enter the elements of the array: ");
+        for (int i = 0; i < length; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+
+        System.out.print("Enter the value of m for m-th maximum: ");
+        int m = scanner.nextInt();
+        System.out.print("Enter the value of n for n-th minimum: ");
+        int n = scanner.nextInt();
+
+
+        int mthMax = findMthMax(arr, m);
+        int nthMin = findNthMin(arr, n);
+
+
+        int sum = mthMax + nthMin;
+        int difference = mthMax - nthMin;
+
+
+        System.out.println("The " + m + "-th maximum number is: " + mthMax);
+        System.out.println("The " + n + "-th minimum number is: " + nthMin);
+        System.out.println("Sum: " + sum);
+        System.out.println("Difference: " + difference);
+    }
+}
