@@ -1,0 +1,42 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter the number of elements in the array: ");
+        int length = scanner.nextInt();
+
+
+        int[] arr = new int[length];
+        System.out.println("Enter the elements of the array: ");
+        for (int i = 0; i < length; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+
+        int[] uniqueArr = removeDuplicates(arr);
+
+
+        System.out.println("Array without duplicates: " + Arrays.toString(uniqueArr));
+    }
+
+    public static int[] removeDuplicates(int[] arr) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : arr) {
+            set.add(num);
+        }
+
+        int[] result = new int[set.size()];
+        int index = 0;
+        for (int num : set) {
+            result[index++] = num;
+        }
+
+        return result;
+    }
+}
