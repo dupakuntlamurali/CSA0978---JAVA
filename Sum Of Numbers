@@ -1,0 +1,55 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class SumOfNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = 0;
+
+
+        while (true) {
+            try {
+                System.out.print("Enter the number of elements (N): ");
+                n = scanner.nextInt();
+                if (n > 0) {
+                    break;
+                } else {
+                    System.out.println("Please enter a positive number.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scanner.next();
+            }
+        }
+
+        int[] numbers = new int[n];
+        System.out.println("Enter " + n + " numbers:");
+
+        for (int i = 0; i < n; i++) {
+            while (true) {
+                try {
+                    numbers[i] = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter an integer.");
+                    scanner.next(); 
+                }
+            }
+        }
+
+        int sum = 0;
+
+        try {
+
+            for (int i = 0; i <= n; i++) {
+                sum += numbers[i];
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException caught: " + e.getMessage());
+        }
+
+        System.out.println("Sum of the numbers: " + sum);
+        
+        scanner.close();
+    }
+}
