@@ -1,0 +1,27 @@
+public class PerfectNumber {
+
+    public static void main(String[] args) {
+        int a = 1;
+        int b = 100;
+
+        System.out.println("Perfect numbers between " + a + " and " + b + " are:");
+        for (int i = a; i <= b; i++) {
+            if (isPerfect(i)) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+
+    public static boolean isPerfect(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        int sum = 1;
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum == num;
+    }
+}
