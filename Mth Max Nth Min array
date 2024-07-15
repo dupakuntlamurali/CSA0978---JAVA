@@ -1,0 +1,31 @@
+import java.util.Arrays;
+
+public class MthMaxNthMin {
+
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 9, 1, 5, 6, 7, 3, 4, 8};
+        int m = 3;
+        int n = 4;
+
+        Arrays.sort(arr);
+
+
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+
+
+        if (n <= arr.length) {
+            int nthMin = arr[n - 1];
+            System.out.println(n + "th minimum element: " + nthMin);
+        } else {
+            System.out.println("Array does not have " + n + " elements.");
+        }
+
+
+        if (m <= arr.length) {
+            int mthMax = arr[arr.length - m];
+            System.out.println(m + "th maximum element: " + mthMax);
+        } else {
+            System.out.println("Array does not have " + m + " elements.");
+        }
+    }
+}
