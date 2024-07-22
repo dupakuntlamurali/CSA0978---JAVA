@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class DecimalToBinary {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Enter a decimal number: ");
+        int decimal = scanner.nextInt();
+
+
+        String binary = convertToBinary(decimal);
+
+    
+        System.out.println("Decimal - " + decimal);
+        System.out.println("Binary - " + binary);
+    }
+
+    public static String convertToBinary(int decimal) {
+        StringBuilder binary = new StringBuilder();
+        
+
+        for (int i = 31; i >= 0; i--) {
+
+            int mask = 1 << i;
+            if ((decimal & mask) != 0) {
+                binary.append("1");
+            } else {
+                binary.append("0");
+            }
+        }
+        
+        return binary.toString();
+    }
+}
