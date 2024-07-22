@@ -1,0 +1,47 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Scanner;
+
+public class UniquePermutations {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        String number = scanner.next();
+
+        if (!number.matches("\\d+")) {
+            System.out.println("Please enter a valid number.");
+            scanner.close();
+            return;
+        }
+
+        Set<String> permutations = new HashSet<>();
+        generatePermutations(number.toCharArray(), 0, permutations);
+
+        System.out.println("Unique permutations:");
+        for (String perm : permutations) {
+            System.out.println(perm);
+        }
+
+        scanner.close();
+    }
+
+    private static void generatePermutations(char[] chars, int index, Set<String> permutations) {
+        if (index == chars.length - 1) {
+            permutations.add(new String(chars));
+        } else {
+            for (int i = index; i < chars.length; i++) {
+                swap(chars, index, i);
+                generatePermutations(chars, index + 1, permutations);
+                swap(chars, index, i); 
+            }
+        }
+    }
+
+    private static void swap(char[] chars, int i, int j) {
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
+    }
+}
