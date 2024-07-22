@@ -1,0 +1,30 @@
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class DayOfWeekFinder {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter day: ");
+        int day = scanner.nextInt();
+
+        System.out.print("Enter month: ");
+        int month = scanner.nextInt();
+
+        System.out.print("Enter year: ");
+        int year = scanner.nextInt();
+
+        try {
+            LocalDate date = LocalDate.of(year, month, day);
+            String dayOfWeek = date.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+            System.out.println("Day of the week: " + dayOfWeek);
+        } catch (Exception e) {
+            System.out.println("Invalid date. Please enter a valid date.");
+        }
+
+        scanner.close();
+    }
+}
