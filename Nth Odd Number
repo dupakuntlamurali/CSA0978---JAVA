@@ -6,7 +6,6 @@ public class NthOddNumber {
         System.out.print("Enter the value of N: ");
         int n = input.nextInt();
 
-        // Calculate the nth odd number after the first n odd numbers
         int nthOddAfterNOdds = (2 * n - 1) + (2 * n);
 
         System.out.println(n + "th odd number after " + n + " odd numbers = " + nthOddAfterNOdds);
