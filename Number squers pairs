@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class NumberSquarePairs {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the lower range: ");
+        int lowerRange = scanner.nextInt();
+        System.out.print("Enter the upper range: ");
+        int upperRange = scanner.nextInt();
+
+        if (lowerRange > upperRange) {
+            System.out.println("Lower range should be less than or equal to the upper range.");
+            scanner.close();
+            return;
+        }
+
+        List<int[]> pairs = generateNumberSquarePairs(lowerRange, upperRange);
+
+        System.out.print("[");
+        for (int i = 0; i < pairs.size(); i++) {
+            int[] pair = pairs.get(i);
+            System.out.print("(" + pair[0] + ", " + pair[1] + ")");
+            if (i < pairs.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+
+        scanner.close();
+    }
+
+    public static List<int[]> generateNumberSquarePairs(int lower, int upper) {
+        List<int[]> result = new ArrayList<>();
+
+        for (int i = lower; i <= upper; i++) {
+            int[] pair = {i, i * i};
+            result.add(pair);
+        }
+
+        return result;
+    }
+}
