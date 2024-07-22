@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class CollegeUsers {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Total Users: ");
+        int totalUsers = 0;
+        try {
+            totalUsers = scanner.nextInt();
+            if (totalUsers < 0) {
+                throw new IllegalArgumentException("Total Users cannot be negative.");
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter a non-negative integer.");
+            scanner.close();
+            return;
+        }
+
+        System.out.print("Enter Staff Users: ");
+        int staffUsers = 0;
+        try {
+            staffUsers = scanner.nextInt();
+            if (staffUsers < 0) {
+                throw new IllegalArgumentException("Staff Users cannot be negative.");
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter a non-negative integer.");
+            scanner.close();
+            return;
+        }
+
+        if (staffUsers > totalUsers) {
+            System.out.println("Staff Users cannot be more than Total Users.");
+            scanner.close();
+            return;
+        }
+
+        int nonTeachingStaff = staffUsers / 3;
+
+        int studentUsers = totalUsers - staffUsers - nonTeachingStaff;
+
+        System.out.println("Student Users: " + studentUsers);
+
+        scanner.close();
+    }
+}
