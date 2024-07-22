@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class DaysConverter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter the number of days: ");
+        int days = scanner.nextInt();
+        
+        if (days < 0) {
+            System.out.println("Invalid input. Number of days cannot be negative.");
+            scanner.close();
+            return;
+        }
+        
+
+        final int DAYS_IN_YEAR = 365;
+        final int DAYS_IN_WEEK = 7;
+
+
+        int years = days / DAYS_IN_YEAR;
+        int remainingDays = days % DAYS_IN_YEAR;
+        int weeks = remainingDays / DAYS_IN_WEEK;
+        int daysLeft = remainingDays % DAYS_IN_WEEK;
+
+
+        System.out.println("No. of years: " + years);
+        System.out.println("No. of weeks: " + weeks);
+        System.out.println("No. of days: " + daysLeft);
+        
+        scanner.close();
+    }
+}
