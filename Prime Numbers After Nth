@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PrimeNumbersAfterNth {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n to find nth prime number: ");
+        int n = scanner.nextInt();
+        System.out.print("Enter the number of prime numbers to print after the nth prime: ");
+        int count = scanner.nextInt();
+
+        if (n <= 0 || count <= 0) {
+            System.out.println("Both n and count should be positive integers.");
+            scanner.close();
+            return;
+        }
+
+        List<Integer> primes = new ArrayList<>();
+        int currentNumber = 2;
+
+        while (primes.size() < n) {
+            if (isPrime(currentNumber)) {
+                primes.add(currentNumber);
+            }
+            currentNumber++;
+        }
+
+        int nthPrime = primes.get(n - 1);
+        System.out.println("The " + n + "th prime number is: " + nthPrime);
+
+        List<Integer> primesAfterNth = new ArrayList<>();
+        currentNumber = nthPrime + 1;
+
+        while (primesAfterNth.size() < count) {
+            if (isPrime(currentNumber)) {
+                primesAfterNth.add(currentNumber);
+            }
+            currentNumber++;
+        }
+
+        System.out.println("The next " + count + " prime numbers after the " + n + "th prime number are:");
+        for (int prime : primesAfterNth) {
+            System.out.print(prime + " ");
+        }
+        System.out.println();
+
+        scanner.close();
+    }
+
+
+    public static boolean isPrime(int number) {
+        if (number <= 1) return false;
+        if (number == 2) return true; 
+        if (number % 2 == 0) return false; 
+
+        for (int i = 3; i * i <= number; i += 2) {
+            if (number % i == 0) return false;
+        }
+
+        return true;
+    }
+}
